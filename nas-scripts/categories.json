@@ -1,0 +1,15 @@
+[
+  {"id": "ideas",       "label": "想法/灵感",           "icon": "lightbulb",       "color": "#FFC107"},
+  {"id": "quotes",      "label": "收集的文字",          "icon": "format_quote",    "color": "#9C27B0"},
+  {"id": "done_today",  "label": "今天做了什么",        "icon": "check_circle",    "color": "#4CAF50"},
+  {"id": "todo_tomorrow","label": "明天要做什么",       "icon": "event",           "color": "#2196F3"},
+  {"id": "long_term",   "label": "未来/长期计划",       "icon": "explore",         "color": "#FF9800"},
+  {"id": "mood",        "label": "情绪与感受",          "icon": "mood",            "color": "#E91E63"},
+  {"id": "learning",    "label": "学习与成长",          "icon": "school",          "color": "#00BCD4"},
+  {"id": "gratitude",   "label": "感恩与美好",          "icon": "favorite",        "color": "#FF5722"},
+  {"id": "health",      "label": "健康与运动",          "icon": "fitness_center",  "color": "#8BC34A"},
+  {"id": "reading",     "label": "阅读与观影",          "icon": "menu_book",       "color": "#795548"},
+  {"id": "work",        "label": "工作与项目",          "icon": "work",            "color": "#607D8B"},
+  {"id": "social",      "label": "人际与社交",          "icon": "people",          "color": "#3F51B5"},
+  {"id": "random",      "label": "随想杂记",            "icon": "more_horiz",      "color": "#9E9E9E"}
+]
