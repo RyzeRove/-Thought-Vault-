@@ -1,0 +1,41 @@
+services:
+  thought-vault-web:
+    build: .
+    container_name: thought-vault-web
+    restart: unless-stopped
+    ports:
+      - "<your-host-http-port>:80"
+      - "<your-host-https-port>:443"
+    volumes:
+      - ./ssl/fullchain.pem:/etc/nginx/certs/fullchain.pem:ro
+      - ./ssl/privkey.pem:/etc/nginx/certs/privkey.pem:ro
+    depends_on:
+      mosquitto:
+        condition: service_started
+
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: thought-vault-mosquitto
+    restart: unless-stopped
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./mosquitto/data:/mosquitto/data
+    # 不映射端口 — 仅 Docker 内网可达（thought-vault-web 通过 mosquitto:1883/9001 访问）
+
+  reminder-scheduler:
+    image: node:22-alpine
+    container_name: thought-vault-reminder
+    restart: unless-stopped
+    working_dir: /app
+    command: >
+      sh -c "npm install --production && npx tsx index.ts"
+    volumes:
+      - ./server:/app
+    environment:
+      - TZ=Asia/Shanghai
+      - MQTT_URL=mqtt://mosquitto:1883
+      # REMINDER_TIMES 可选，格式 "HH:mm,HH:mm,..."，不设则默认 11:30/17:30/21:30
+      - REMINDER_TIMES=11:30,17:30,21:30
+    depends_on:
+      mosquitto:
+        condition: service_started
