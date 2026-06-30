@@ -1,5 +1,16 @@
+# 原代码（已脱敏至 sanitized/）
+/nas-scripts/
+/thought-vault/
+/thought-vault-web/
+
+# IDE
+.idea/
+*.iml
+
+# OS
+.DS_Store
+
+# 个人配置
 .claude/
 .vscode/
-.idea/
-.DS_Store
-*.iml
+local.properties
